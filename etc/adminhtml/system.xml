@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="google_nlp_tab" translate="label" sortOrder="900">
+            <label>Google Natural Language API</label>
+        </tab>
+        <section id="google_nlp" translate="label" type="text" sortOrder="301" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Configuration</label>
+            <tab>google_nlp_tab</tab>
+            <resource>AstralWeb_NLP::nlp_config</resource>
+            <group id="nlp_config" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configuration</label>
+                <field id="enable" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable Google NLP</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="nlp_credentials_file" translate="label" type="Magento\Config\Block\System\Config\Form\Field\File" sortOrder="6" showInDefault="1" showInWebsite="1" >
+                    <label>Upload GOOGLE_APPLICATION_CREDENTIALS json file</label>
+                    <backend_model>AstralWeb\NLP\Model\Config\Backend\AllowFileType</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
