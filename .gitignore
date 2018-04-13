@@ -1,3 +1,5 @@
 app/code/AstralWeb/NLP/Library/credentials/*
 app/code/AstralWeb/NLP/Library/env_NLP/*
+.idea
+.env
 
