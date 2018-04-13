@@ -74,7 +74,7 @@ class AnalyzeNLP extends \Magento\Framework\App\Helper\AbstractHelper
         $text = escapeshellarg($text);
 
         $output = shell_exec(" export GOOGLE_APPLICATION_CREDENTIALS=".$this->credentialJsonPath." && ".$this->envPythonPath." ".$this->analyzeLibraryPath." ".$type." ".$text);
-        var_dump($output);
+
         $result = json_decode($output, true);
         return $result;
     }

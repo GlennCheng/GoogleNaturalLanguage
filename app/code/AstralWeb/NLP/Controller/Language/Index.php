@@ -28,9 +28,6 @@ use AstralWeb\NLP\Helper\AnalyzeNLP;
 class Index extends Action
 {
 
-    use ClientTrait;
-    use RetryDeciderTrait;
-
     protected $resultPageFactory;
 
     protected $helperAnalyze;
@@ -67,8 +64,8 @@ class Index extends Action
         $text = $this->getRequest()->getParam('text');
 
         $result = $this->helperAnalyze->analyze($type, $text);
-        var_dump($result);
+        var_dump(json_encode($result));
 
-        return $this->resultPageFactory->create();
+        //return $this->resultPageFactory->create();
     }
 }
