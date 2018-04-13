@@ -1,13 +1,11 @@
-Google Cloud Natural Language Module 
-===============================================================================
+#Google Cloud Natural Language Module 
 
 This module is created for Magento2, contains Cloud Natural Language API. The [Google Cloud Natural Language API] provides natural language understanding technologies to developers, including sentiment analysis, entity recognition, and syntax analysis. This API is part of the larger Cloud Machine Learning API.
 
 [Google Cloud Natural Language API]:
     http://cloud.google.com/natural-language
 
-Setup
--------------------------------------------------------------------------------
+#Setup
 
 ###Authentication
 
@@ -51,8 +49,8 @@ Finally
 This module include the minimum python environment and dependencies of this module.
 
 
-Use
--------------------------------------------------------------------------------
+##Use
+
 Use the helper form AstralWeb\NLP\Helper
 
     use AstralWeb\NLP\Helper\AnalyzeNLP;
@@ -74,8 +72,8 @@ In your Class
     }
 
 
-Example and Test
--------------------------------------------------------------------------------
+##Example and Test
+
 You can do testing and get results dump in 
 YourHost/nlp/Language/Index?type=[TYPE]&text=[TEXT]
 
