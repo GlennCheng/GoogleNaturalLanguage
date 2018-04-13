@@ -33,7 +33,7 @@ credentials for applications.
 [Authentication Getting Started Guide]:
     https://cloud.google.com/docs/authentication/getting-started
 
-Finally
+####Finally
 [Enable the Cloud Natural Language API].
 
 [Enable the Cloud Natural Language API]:
