@@ -5,7 +5,7 @@ This module is created for Magento2, contains Cloud Natural Language API. The [G
 [Google Cloud Natural Language API]:
     http://cloud.google.com/natural-language
 
-#Setup
+##Setup
 
 ###Authentication
 
