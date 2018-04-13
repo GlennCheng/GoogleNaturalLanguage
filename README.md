@@ -15,7 +15,7 @@ Please follow these steps to creating a service account
 
 1. Go to the [Create service account key page] in the GCP Console.
 
-[Create service account key page]:
+    [Create service account key page]:
     https://console.cloud.google.com/apis/credentials/serviceaccountkey
 
 1. From the Service account drop-down list, select New service account.
@@ -42,7 +42,8 @@ Finally
 
 ### Setup application credential
 1. Go to **Magendo2 admin page**>**STORES**>**Configuration**>**GOOGLE NATURAL LANGUAGE API**
-1, Upload your downloaded JSON file. 
+
+1. Upload your downloaded JSON file. 
 
 
 ### Dependencies
@@ -75,10 +76,10 @@ In your Class
 ## Example and Test
 
 You can do testing and get results dump in 
-YourHost/nlp/Language/Index?type=[TYPE]&text=[TEXT]
+[YourHost]/nlp/Language/Index?type=[TYPE]&text=[TEXT]
 
 eg.
-YourHost/nlp/Language/Index?type=sentiment&text=AstralWeb is awesome!! (this module is create by Glenn)
+[YourHost]/nlp/Language/Index?type=sentiment&text=AstralWeb is awesome!! (this module is create by Glenn)
 
     {
       "documentSentiment": {
