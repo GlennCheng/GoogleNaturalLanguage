@@ -1,64 +1,63 @@
 Google Cloud Natural Language Module 
 ===============================================================================
 
-This module is created for Magento2, contains Cloud Natural Language API. The `Google Cloud Natural Language API`_ provides natural language understanding technologies to developers, including sentiment analysis, entity recognition, and syntax analysis. This API is part of the larger Cloud Machine Learning API.
+This module is created for Magento2, contains Cloud Natural Language API. The [Google Cloud Natural Language API] provides natural language understanding technologies to developers, including sentiment analysis, entity recognition, and syntax analysis. This API is part of the larger Cloud Machine Learning API.
 
-.. _Google Cloud Natural Language API: http://cloud.google.com/natural-language
+[Google Cloud Natural Language API]:
+    http://cloud.google.com/natural-language
 
 Setup
 -------------------------------------------------------------------------------
 
-Authentication
-++++++++++++++
+###Authentication
 
 This module requires you to have authentication setup,
 
 Please follow these steps to creating a service account
 
-#. Go to the `Create service account key page`_ in the GCP Console.
-.. _Create service account key page: https://console.cloud.google.com/apis/credentials/serviceaccountkey
+1. Go to the [Create service account key page] in the GCP Console.
 
-#. From the Service account drop-down list, select New service account.
+[Create service account key page]:
+    https://console.cloud.google.com/apis/credentials/serviceaccountkey
 
-#. Input a name into the Service account name field.
+1. From the Service account drop-down list, select New service account.
 
-#. From the Role drop-down list, select Project > Owner.
+1. Input a name into the Service account name field.
 
-# Click Create. A JSON file that contains your key downloads to your computer.
+1. From the Role drop-down list, select Project > Owner.
+
+1. Click Create. A JSON file that contains your key downloads to your computer.
 
 Or refer to the
-`Authentication Getting Started Guide`_ for instructions on setting up
+[Authentication Getting Started Guide]for instructions on setting up
 credentials for applications.
 
-.. _Authentication Getting Started Guide:
+[Authentication Getting Started Guide]:
     https://cloud.google.com/docs/authentication/getting-started
 
 Finally
-#. `Enable the Cloud Natural Language API`_.
-.. _Enable the Cloud Natural Language API: https://console.cloud.google.com/flows/enableapi?apiid=language.googleapis.com
+[Enable the Cloud Natural Language API].
+
+[Enable the Cloud Natural Language API]:
+    https://console.cloud.google.com/flows/enableapi?apiid=language.googleapis.com
 
 
-Setup application credential
-++++++++++++++
-#. Go to **Magendo2 admin page**>**STORES**>**Configuration**>**GOOGLE NATURAL LANGUAGE API**
-#. Upload your downloaded JSON file. 
+###Setup application credential
+1. Go to **Magendo2 admin page**>**STORES**>**Configuration**>**GOOGLE NATURAL LANGUAGE API**
+1, Upload your downloaded JSON file. 
 
 
-Dependencies
-++++++++++++++++++++
-
+###Dependencies
 This module include the minimum python environment and dependencies of this module.
 
 
 Use
 -------------------------------------------------------------------------------
 Use the helper form AstralWeb\NLP\Helper
-.. code-block:: php
-    
+
     use AstralWeb\NLP\Helper\AnalyzeNLP;
     
 In your Class
-.. code-block:: php
     
     protected $helperAnalyze;
     
@@ -77,13 +76,11 @@ In your Class
 
 Example and Test
 -------------------------------------------------------------------------------
-
 You can do testing and get results dump in 
 YourHost/nlp/Language/Index?type=[TYPE]&text=[TEXT]
 
 eg.
 YourHost/nlp/Language/Index?type=sentiment&text=AstralWeb is awesome!! (this module is create by Glenn)
-.. code-block:: json
 
     {
       "documentSentiment": {
