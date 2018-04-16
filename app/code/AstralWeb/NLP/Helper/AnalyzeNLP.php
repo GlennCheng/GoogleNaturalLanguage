@@ -26,14 +26,15 @@ use Google\Cloud\Core\RetryDeciderTrait;
 class AnalyzeNLP extends \Magento\Framework\App\Helper\AbstractHelper
 {
 
-    use ClientTrait;
-    use RetryDeciderTrait;
     protected $scopeConfig;
     protected $modulePath;
     protected $envPythonPath;
     protected $credentialJsonPath;
     protected $analyzeLibraryPath;
 
+    /**
+     * AnalyzeNLP constructor.
+     */
     public function __construct()
     {
         //$jsonFile = $this->scopeConfig->getValue('google_nlp/nlp_config/nlp_credentials_file', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
@@ -50,18 +51,22 @@ class AnalyzeNLP extends \Magento\Framework\App\Helper\AbstractHelper
         $this->analyzeLibraryPath = $this->modulePath.'/Library/analyze.py';
     }
 
+
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|Application
+     * @param $type
+     * @param $text
+     * @param null $projectId
+     * @return bool|mixed
      * @throws \Exception
      */
-    public function analyze($type, $text)
+    public function analyze($type, $text, $projectId = null)
     {
-        if ($type !='entities' && $type != 'sentiment' && $type != 'syntax') {
-            throw new \Exception(
-                __('NLP Analyze type is not exist.')
-            );
-            return false;
-        }
+
+        # Instantiates a client
+        $language = new LanguageClient([
+            'projectId' => $projectId,
+            'keyFilePath' => $this->credentialJsonPath,
+        ]);
 
         if ($text == null) {
             throw new \Exception(
@@ -69,14 +74,72 @@ class AnalyzeNLP extends \Magento\Framework\App\Helper\AbstractHelper
             );
             return false;
         }
+        if ($type=='entities') {
+            $result = $this->analyzeEntities($language, $text);
+        } elseif ($type=='sentiment') {
+            $result = $this->analyzeSentiment($language, $text);
+        } elseif ($type=='syntax') {
+            $result = $this->analyzeSyntax($language, $text);
+        } else {
+            throw new \Exception(
+                __('NLP Analyze type is not exist.')
+            );
+            return false;
+        }
 
-        $type = escapeshellarg($type);
-        $text = escapeshellarg($text);
-
-        $output = shell_exec(" export GOOGLE_APPLICATION_CREDENTIALS=".$this->credentialJsonPath." && ".$this->envPythonPath." ".$this->analyzeLibraryPath." ".$type." ".$text);
-
-        $result = json_decode($output, true);
         return $result;
     }
 
+
+    /**
+     * @param $language
+     * @param $text
+     * @param null $projectId
+     * @return mixed
+     */
+    public function analyzeSentiment($language, $text)
+    {
+        // Call the analyzeSentiment function
+        $annotation = $language->analyzeSentiment($text, ['language'=>'en']);
+        // Print document and sentence sentiment information
+        $result = $annotation->info();
+
+        return $result;
+    }
+
+
+    /**
+     * @param $language
+     * @param $text
+     * @param null $projectId
+     * @return mixed
+     */
+    public function analyzeEntities($language, $text)
+    {
+
+        // Call the analyzeSentiment function
+        $annotation = $language->analyzeEntities($text, ['language'=>'en']);
+        // Print document and sentence sentiment information
+        $result = $annotation->info();
+
+        return $result;
+    }
+
+
+    /**
+     * @param $language
+     * @param $text
+     * @param null $projectId
+     * @return mixed
+     */
+    public function analyzeSyntax($language, $text)
+    {
+
+        // Call the analyzeSentiment function
+        $annotation = $language->analyzeSyntax($text, ['language'=>'en']);
+        // Print document and sentence sentiment information
+        $result = $annotation->info();
+
+        return $result;
+    }
 }
