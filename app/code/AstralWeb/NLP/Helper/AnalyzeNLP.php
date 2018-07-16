@@ -21,6 +21,7 @@ use Magento\Framework\App\ObjectManager;
 use Symfony\Component\Console\Application;
 use Google\Cloud\Core\ClientTrait;
 use Google\Cloud\Core\RetryDeciderTrait;
+use Google\Cloud\Language\LanguageClient;
 
 # Includes the autoloader for libraries installed with composer
 class AnalyzeNLP extends \Magento\Framework\App\Helper\AbstractHelper
@@ -46,7 +47,7 @@ class AnalyzeNLP extends \Magento\Framework\App\Helper\AbstractHelper
         $this->modulePath = \Magento\Framework\App\ObjectManager::getInstance()
                 ->get(\Magento\Framework\Module\Dir\Reader::class)
                 ->getModuleDir('', 'AstralWeb_NLP');
-        $this->envPythonPath = $this->modulePath.'/Library/env_NLP/bin/python3';
+        $this->envPythonPath = $this->modulePath.'/Library/env_NLP/bin/python';
         $this->credentialJsonPath = $this->modulePath.'/Library/credentials/'.$jsonFile;
         $this->analyzeLibraryPath = $this->modulePath.'/Library/analyze.py';
     }

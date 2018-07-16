@@ -20,7 +20,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $installer->startSetup();
 
-        $this->addEntityTable($installer, Product::ENTITY);
+        //$this->addEntityTable($installer, Product::ENTITY);
 
         $installer->endSetup();
     }

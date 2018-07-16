@@ -28,6 +28,8 @@ use AstralWeb\NLP\Helper\AnalyzeNLP;
 class Index extends Action
 {
 
+
+
     protected $resultPageFactory;
 
     protected $helperAnalyze;
@@ -61,10 +63,14 @@ class Index extends Action
     {
 
         $type = $this->getRequest()->getParam('type');
+        var_dump($type);
+
         $text = $this->getRequest()->getParam('text');
 
+        var_dump($text);
         $result = $this->helperAnalyze->analyze($type, $text);
-        var_dump(json_encode($result));
+        var_dump(($result));
+
 
         //return $this->resultPageFactory->create();
     }
